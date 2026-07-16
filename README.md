@@ -17,14 +17,6 @@
 
 ---
 
-## 📸 效果预览
-
-### 仓库主页（README 在 GitHub 上的渲染效果）
-
-<p align="center">
-  <img src="docs/screenshots/github-repo.png" alt="GitHub 仓库主页" width="100%">
-</p>
-
 ### 主 sheet：明细表（含超链接公告 / 估值 / 行业）
 
 <p align="center">
