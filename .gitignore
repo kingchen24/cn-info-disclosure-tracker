@@ -1,0 +1,41 @@
+﻿# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# 依赖 & 锁文件
+# requirements.txt 通常还是入仓库
+
+# 运行期缓存（重启可重抓）
+data/raw/
+data/cache/
+*.pickle
+*.parquet
+
+# 输出文件（不进入仓库，由脚本在本地生成；走 GitHub Release）
+output/
+releases/*.xlsx
+releases/*.csv
+
+# 环境/密钥
+.env
+.env.local
+config.local.yaml
+
+# IDE / 临时
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# 日志
+*.log

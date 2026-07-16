@@ -1,0 +1,63 @@
+﻿# ============================================================================
+#  A 股财报披露跟踪 - 主配置
+#  下个周期（如 2026 三季报、2026 年报）只需修改 period / disclosure 两项
+# ============================================================================
+
+# 报告周期: 一季报 | 半年报 | 三季报 | 年报
+period: 半年报
+
+# 披露类别: 业绩预告 | 业绩快报 | 业绩预告(含更正)
+disclosure: 业绩预告
+
+# 数据来源市场: 沪深京（含沪市主板、深市主板、创业板、科创板）
+market: 沪深京
+
+# 起止日期（YYYYMMDD）—— 设为 null 时自动取「当前日期 - lookback_days」
+start_date: 20260615
+end_date:   20260715
+lookback_days: 30     # 当 start_date/end_date 为 null 时启用
+
+# 板块过滤: 主板 | 主板+创业板 | 全部 A 股
+board_filter: 主板
+
+# 主板代码前缀（用于 board_filter=主板 时筛选）
+main_board_prefixes:
+  - "600"
+  - "601"
+  - "603"
+  - "605"     # 沪市主板
+  - "000"
+  - "001"
+  - "002"
+  - "003"     # 深市主板（含原中小板已并入）
+
+# 排除代码前缀（如科创板 688、创业板 300/301、北交所 8/4/9 开头等）
+exclude_prefixes:
+  - "688"
+  - "300"
+  - "301"
+  - "8"
+  - "4"
+  - "9"
+
+# 估值数据来源: baidu（百度股市通）| eastmoney（东方财富，需稳定代理）
+valuation_source: baidu
+
+# 估值指标（百度口径）
+valuation_indicators:
+  - 市盈率(TTM)   # 滚动 12 月
+  - 市盈率(静)    # 基于上年 EPS
+  - 市净率
+  - 总市值
+
+# 抓取并发与缓存
+concurrency:
+  profile_workers: 1   # akshare profile 接口串行最稳
+  valuation_workers: 6 # 百度接口支持轻量并发
+
+# 输出
+output:
+  xlsx: "output/{period}_{disclosure}_{board_filter}_{start_date}_{end_date}.xlsx"
+  summary_csv: "output/{period}_{disclosure}_{board_filter}_summary.csv"
+  raw_dir: "data/raw"
+  cache_dir: "data/cache"
